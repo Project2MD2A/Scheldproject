@@ -13,7 +13,7 @@ if (mysqli_connect_errno()) {
 
 
 // de query die je gaat toepassen op de database.
-$sql = "SELECT id, tweet, time, user, vote FROM tbl_tweets ORDER BY id DESC";
+$sql = "SELECT id, tweet, time, user, vote, avatar FROM tbl_tweets ORDER BY id DESC";
 
 
 // indien er een esultaat uitkomt doe dan.
@@ -22,10 +22,10 @@ $result = mysqli_query($link, $sql);
 
 //print_r($result);
 
-$htmlOutput ="<table><tr><th>id</th><th>tweet</th><th>time</th><th>user</th><th>vote</th></tr>";
+$htmlOutput ="<table><tr><th>id</th><th>tweet</th><th>time</th><th>user</th><th>vote</th><th>avatar</th></tr>";
 while($row = mysqli_fetch_array($result)){
 	// laat de inoud van de tabel zien.
-	$htmlOutput .= "<tr><td>".$row["id"]."</td><td>".$row["tweet"]."</td><td>".$row["time"]."</td><td>".$row["user"]."</td><td>".$row["vote"]."</td></tr>";
+	$htmlOutput .= "<tr><td>".$row["id"]."</td><td>".$row["tweet"]."</td><td>".$row["time"]."</td><td>".$row["user"]."</td><td>".$row["vote"]."</td><td><img src=".$row["avatar"]." width=\"130px\" height=\"130px\"></td></tr>";
 }
 $htmlOutput .= "</tabe>";
 
