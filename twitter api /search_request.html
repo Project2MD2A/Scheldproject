@@ -1,0 +1,38 @@
+<script src='jquery.min.js'></script>
+
+<script>
+
+	jQuery(document).ready(function($) {
+	
+		// Run when Search button is clicked
+			
+			// This can take a few seconds so display progress text
+			$('#search_results').html('Searching Twitter...');
+			
+			// Get the value of the input field
+			// Encode it for use in a URL
+			var search_value = ["klote rot", "henk"];
+			// Send the search terms to the server in an Ajax request
+			// This URL is for illustration only
+			// You MUST change it to your server
+
+			for(i=0; i < search_value.length; i++){
+				
+
+				$.ajax({
+					url: 'search_response.php?q=' + search_value[i][,
+					success: function(data){
+						
+						// Display the results
+						$('#search_results').append(data);
+					}
+				})
+			}
+		
+	});
+</script>
+	
+Ajax Search: 
+
+
+<div id='search_results'></div>
