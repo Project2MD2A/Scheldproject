@@ -1,0 +1,36 @@
+<script src='jquery.min.js'></script>
+
+<script>
+//gecodeerd door roy van zoelen , orin van beek
+	jQuery(document).ready(function($) {
+	
+
+			// This can take a few seconds so display progress text
+			$('#search_results').html('Searching Twitter...');
+			
+			// Get the value of the input field
+			// Encode it for use in a URL
+			var search_value = ["sinterklaas", "zwartepiet"];
+			var html_output = "";
+			// Send the search terms to the server in an Ajax request
+			// This URL is for illustration only
+			// You MUST change it to your server
+
+			for(var i=0; i<search_value.length; i++){
+
+				$.ajax({
+					url: 'search_response.php?q=' + search_value[i],
+					success: function(data){
+						// Display the results
+						html_output = data;
+						$('#search_results').append(html_output);
+
+
+					}
+			
+				})
+			}
+
+
+	});
+</script>
